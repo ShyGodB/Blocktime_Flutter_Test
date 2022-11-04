@@ -9,34 +9,54 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  // Widget _buildTimeColumn() {
+  //   List<Widget> list = [];
+  //   for (int i = 0; i < 24; i++) {
+  //     Widget column = Center(child: Text('$i:00'),);
+  //     list.add(column);
+  //   }
+  //   return ListView(children: list,);
+  // }
+
   Widget _buildWidget() {
-    List<TableRow> tableItems =  [];
+    List<Widget> tableItems =  [];
     for( int i = 0; i < 24; i++) {
-      var column = TableRow(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(width: 2.0, color: Colors.white),
-              borderRadius: const BorderRadius.all(Radius.circular(0)),
-            ),
+      var column = Row(
             children: <Widget>[
-              SizedBox(height: 28, child: Center(child: Text("$i:00", textAlign: TextAlign.center,))),
-              const SizedBox(height: 28, child: Text("")),
-              const SizedBox(height: 28, child: Text("")),
+              Expanded(
+                flex: 1,
+                child: SizedBox(height: 25, child: Center(child: Text("$i:00", textAlign: TextAlign.center,),))
+              ),
+              // SizedBox(width: 10,),
+              const Expanded(
+                flex: 2,
+                child: Card(
+                  color: Colors.red,
+                  // shadowColor: Colors.blue,
+                  // elevation: 10,
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  // child: Center(child: Text("", textAlign: TextAlign.center,))
+                  child: SizedBox(height: 25, child: Center(child: Text("", textAlign: TextAlign.center,),))
+                )
+              ),
+              // SizedBox(width: 10,),
+
+              const Expanded(
+                flex: 2,
+                child: Card(
+                  color: Colors.red,
+                  shadowColor: Colors.blue,
+                  elevation: 10,
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  // child: Center(child: Text("", textAlign: TextAlign.center,))
+                  child: SizedBox(height: 25, child: Center(child: Text("", textAlign: TextAlign.center,),))
+                ),
+              ),
             ],
           );
       tableItems.add(column);
     }
-    return Table(
-        columnWidths: const <int, TableColumnWidth>{
-          0: FixedColumnWidth(50.0),
-          1: FixedColumnWidth(100.0),
-          2: FixedColumnWidth(100.0),
-        },
-        border: TableBorder.all(
-          color: Colors.grey, 
-          width: 1.0, 
-          style: BorderStyle.solid
-        ),
+    return ListView(
         children: tableItems,
     );
   }
@@ -71,22 +91,18 @@ class _HomePageState extends State<HomePage> {
         textDirection: TextDirection.ltr,
         // mainAxisAlignment: MainAxisAlignment.spaceAround, // 在使用 Expanded 时，此项不生效
         children: [
+          // Expanded(
+          //   flex: 2,
+          //   child: _buildTimeColumn(),
+          // ),
           Expanded(
-            flex: 3,
-            child: Container(
-              alignment: Alignment.topLeft,
-              width: 300,
-              height: 800,
-              padding: const EdgeInsets.all(8.0),
-              child: _buildWidget(),
-            )
+            flex: 4,
+            child: _buildWidget()
           ),
-          const Expanded(child: SizedBox(width: 20,)),
+          const Expanded(flex: 1, child: SizedBox(width: 10,)),
           Expanded(
             flex: 2,
-            child: Container(
-              child: _buildCard()
-            )
+            child: _buildCard()
           )
         ],
       )
