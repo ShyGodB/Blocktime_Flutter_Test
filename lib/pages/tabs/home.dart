@@ -74,7 +74,9 @@ class _HomePageState extends State<HomePage> {
           margin: EdgeInsets.fromLTRB(0, top.toDouble(), 0, 0),
           child: SizedBox(height: 40, child: Center(child: Text(list[i], textAlign: TextAlign.center,),))
         ),
-        onTap: () => print('这是第$i个卡片'),
+        onTap: () => {
+          // print('这是第$i个卡片')
+        },
       );
       listViewItems.add(column);
     }

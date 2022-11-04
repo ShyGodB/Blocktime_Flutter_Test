@@ -24,7 +24,7 @@ class _TabsState extends State<Tabs> {
           appBar: AppBar(
             leading: IconButton( // 左侧的按钮图标
               icon: const Icon(Icons.menu), onPressed: () {
-                print("左侧的按钮图标");
+                // print("左侧的按钮图标");
               },
             ),
             backgroundColor: Colors.red,
@@ -33,13 +33,13 @@ class _TabsState extends State<Tabs> {
               IconButton(
                 icon: const Icon(Icons.menu),
                 onPressed: () {
-                  print("搜索图标");
+                  // print("搜索图标");
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.more_horiz),
                 onPressed: () {
-                  print("搜索图标");
+                  // print("搜索图标");
                 },
               )
             ],
